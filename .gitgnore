@@ -1,0 +1,5 @@
+data/*
+rec/
+log/
+synset.txt
+*/__pycache__
