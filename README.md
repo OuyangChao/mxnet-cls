@@ -14,14 +14,14 @@ This repository is copied from [Image Classification Examples](https://github.co
 
 Assume all images are stored as individual image files such as .png or .jpg, and images belonging to the same class are placed in the same directory. All these class directories are then in the same root `data` directory.
 * We first prepare two `.lst` files, which consist of the labels and image paths can be used for generating `rec` files.
-```bash
-python im2rec.py rec/img data/ --list=True --train-ratio=0.8 --recursive=True
-```
+  ```bash
+  python im2rec.py rec/img data/ --list=True --train-ratio=0.8 --recursive=True
+  ```
 * Then we generate the `.rec` files. We resize the images such that the short edge is at least 256px.
-```bash
-python im2rec.py rec/img_train data/ --resize=256
-python im2rec.py rec/img_val data/ --resize=256
-```
+  ```bash
+  python im2rec.py rec/img_train data/ --resize=256
+  python im2rec.py rec/img_val data/ --resize=256
+  ```
 * Use `python im2rec.py --help` to see more options.
 
 ## Train
