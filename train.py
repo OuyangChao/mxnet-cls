@@ -38,10 +38,9 @@ if __name__ == '__main__':
         network          = 'resnet',
         num_layers       = 18,
         # data
-        data_train       = 'img_train.rec',
-        data_val         = 'img_val.rec',
+        data_train       = 'rec/img_train.rec',
+        data_val         = 'rec/img_val.rec',
         num_classes      = 2,
-        num_examples     = 20000,
         image_shape      = '3,224,224',
         # train
         batch_size       = 32,
@@ -58,6 +57,12 @@ if __name__ == '__main__':
     from importlib import import_module
     net = import_module('symbols.'+args.network)
     sym = net.get_symbol(**vars(args))
+
+    # check actual number of train_images
+    if os.path.exists(args.data_train.replace('.rec', '.idx')):
+        with open(args.data_train.replace('.rec', '.idx'), 'r') as f:
+            txt = f.readlines()
+        args.num_examples = len(txt)
 
     # train
     fit.fit(args, sym, data.get_rec_iter)
