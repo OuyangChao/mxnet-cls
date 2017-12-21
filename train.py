@@ -41,13 +41,13 @@ if __name__ == '__main__':
         data_train       = 'img_train.rec',
         data_val         = 'img_val.rec',
         num_classes      = 2,
-        num_examples     = 1905,
+        num_examples     = 20000,
         image_shape      = '3,224,224',
         # train
         batch_size       = 32,
-        num_epochs       = 30,
+        num_epochs       = 10,
         lr               = 0.01,
-        lr_step_epochs   = '15,25',
+        lr_step_epochs   = '6,8',
         dtype            = 'float32',
         gpus             = '0',
         model_prefix     = 'models/img_cls'

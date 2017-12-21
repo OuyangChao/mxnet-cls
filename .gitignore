@@ -1,1 +1,3 @@
+models/*.params
+rec/*.rec
 */__pycache__

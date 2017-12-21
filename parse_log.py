@@ -61,11 +61,11 @@ for l in lines:
     data[epoch][i*2+1] += 1
 
 if args.format == 'markdown':
-    print "| epoch | train-accuracy | valid-accuracy | time |"
-    print "| --- | --- | --- | --- |"
+    print ("| epoch | train-accuracy | valid-accuracy | time |")
+    print ("| --- | --- | --- | --- |")
     for k, v in data.items():
-        print "| %2d | %f | %f | %.1f |" % (k+1, v[0]/v[1], v[2]/v[3], v[4]/v[5])
+        print ("| %2d | %f | %f | %.1f |" % (k+1, v[0]/v[1], v[2]/v[3], v[4]/v[5]))
 elif args.format == 'none':
-    print "epoch\ttrain-accuracy\tvalid-accuracy\ttime"
+    print ("epoch\ttrain-accuracy\tvalid-accuracy\ttime")
     for k, v in data.items():
-        print "%2d\t%f\t%f\t%.1f" % (k+1, v[0]/v[1], v[2]/v[3], v[4]/v[5])
+        print ("%2d\t%f\t%f\t%.1f" % (k+1, v[0]/v[1], v[2]/v[3], v[4]/v[5]))

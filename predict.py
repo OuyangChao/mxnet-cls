@@ -1,4 +1,5 @@
 import mxnet as mx
+import argparse
 import matplotlib.pyplot as plt
 import cv2
 import numpy as np
@@ -30,7 +31,7 @@ def get_image(url, show=False):
 def predict(model, epoch, url):
     sym, arg_params, aux_params = mx.model.load_checkpoint(model, epoch)
     mod = mx.mod.Module(symbol=sym, context=mx.gpu(0), label_names=None)
-    mod.bind(for_training=False, data_shapes=[('data', (1,3,224,224))], 
+    mod.bind(for_training=False, data_shapes=[('data', (1,3,224,224))],
         label_shapes=mod._label_shapes)
     mod.set_params(arg_params, aux_params, allow_missing=True)
     with open('synset.txt', 'r') as f:
@@ -48,7 +49,7 @@ def predict(model, epoch, url):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='predicting an image')
-    parser.add_argument('url', nargs=1, type=str,
+    parser.add_argument('url', type=str,
                         help = 'the image file for predicting')
     parser.add_argument('--model', type=str, required=True,
                         help = 'the model name.')
