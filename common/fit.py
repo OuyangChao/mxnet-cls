@@ -108,6 +108,8 @@ def add_fit_args(parser):
                              takes `2bit` or `none` for now')
     train.add_argument('--gc-threshold', type=float, default=0.5,
                        help='threshold for 2bit gradient compression')
+    train.add_argument('--log', type=str, default='log/train.log',
+                       help='save training log to file')
     return train
 
 def fit(args, network, data_loader, **kwargs):

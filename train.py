@@ -18,10 +18,6 @@
 import os
 import argparse
 import logging
-logging.basicConfig(level=logging.DEBUG, filename='log/train.log', filemode='w')
-console = logging.StreamHandler()
-console.setLevel(logging.DEBUG)
-logging.getLogger('').addHandler(console)
 from common import data, fit
 import mxnet as mx
 
@@ -49,7 +45,8 @@ if __name__ == '__main__':
         lr_step_epochs   = '6,8',
         dtype            = 'float32',
         gpus             = '0',
-        model_prefix     = 'models/img_cls'
+        model_prefix     = 'models/img_cls',
+        log              = 'log/reset18.log'
     )
     args = parser.parse_args()
 
@@ -63,6 +60,13 @@ if __name__ == '__main__':
         with open(args.data_train.replace('.rec', '.idx'), 'r') as f:
             txt = f.readlines()
         args.num_examples = len(txt)
+
+    # set up logger
+    logging.basicConfig()
+    logger = logging.getLogger()
+    logger.setLevel(logging.DEBUG)
+    fh = logging.FileHandler(args.log)
+    logger.addHandler(fh)
 
     # train
     fit.fit(args, sym, data.get_rec_iter)
