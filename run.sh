@@ -2,7 +2,7 @@
 # File Name: run.sh
 # Description:
 # Author: OuyangChao
-# mail: ouyangchao16@163.com
+# mail: ouyangchao16@gmail.com
 # Created Time: Wed 20 Dec 2017 02:19:22 PM CST
 # Last modified: Wed 20 Dec 2017 02:19:22 PM CST
 #########################################################################
@@ -23,8 +23,8 @@ python train.py --data-train rec/img_train.rec --data-val rec/img_val.rec
 python parse_log.py log/train.log
 
 # test
-python score.py --model models/img_cls --epoch 30 --data-val rec/img_val.rec
+python score.py --model models/img_cls --epoch 10 --data-val rec/img_val.rec
 
 # predict an image
-python predict.py img.jpg --model models/img_cls --epoch 30
+python predict.py img.jpg --model models/img_cls --epoch 10
 
