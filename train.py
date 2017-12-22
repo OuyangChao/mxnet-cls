@@ -46,7 +46,7 @@ if __name__ == '__main__':
         dtype            = 'float32',
         gpus             = '0',
         model_prefix     = 'models/img_cls',
-        log              = 'log/reset18.log'
+        log              = 'log/train.log'
     )
     args = parser.parse_args()
 
